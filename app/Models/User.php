@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Kota;
+use App\Models\Feedback;
+use App\Models\Aduan;
 
 class User extends Authenticatable
 {
@@ -20,6 +23,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'domisili',
+        'foto',
         'password',
     ];
 
@@ -41,4 +46,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function User(){
+    return $this->hasOne(Kota::class, 'id', 'id_kota');
+    return $this->hasMany(Feedback::class, 'id', 'id_feedback');
+    return $this->hasMany(Aduan::class, 'id', 'id_aduan');
+    }
 }

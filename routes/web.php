@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('/registrasi', function () {
+    return view('registrasi');
+});
+Route::get('/faq', function () {
+    return view('Faq');
+});
+Route::get('/verif', function () {
+    return view('verifikasi');
+});
+Route::get('/kontak', function () {
+    return view('Contact');
+});
+Route::get('login', [LoginController::class, 'index']);
+Route::post('login', [LoginController::class, 'authenticate']);
