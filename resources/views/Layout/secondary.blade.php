@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ URL::to('/assets/img/logo.png') }}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     {{-- CSS Custom --}}
     <style>
         html {
@@ -140,13 +140,13 @@
                     {{-- <li class="nav-item">
                         <a class="btn btn-utama fw-bold px-4" href="/login">Masuk</a>
                     </li> --}}
-                    
+
                     {{-- Registered --}}
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="btn btn-light nav-link dropdown-toggle p-1" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><span
-                                    class="material-icons md-36 align-middle">account_circle</span>
+                            <button class="btn btn-light nav-link dropdown-toggle" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                class="bi bi-person-circle"></i>
                                 Nama
                             </button>
                             <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
