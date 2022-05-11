@@ -124,10 +124,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/')) fw-bold active @endif" href="/">Home</a>
+                        <a class="nav-link @if (Route::is('/')) fw-bold active @endif" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif" href="#">Proyek</a>
+                        <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif" href="{{ route('proyek.index') }}">Proyek</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if (Route::is('/laporan')) fw-bold active @endif" href="#">Laporan</a>
@@ -140,21 +140,34 @@
                     {{-- <li class="nav-item">
                         <a class="btn btn-utama fw-bold px-4" href="/login">Masuk</a>
                     </li> --}}
-
                     {{-- Registered --}}
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button class="btn btn-light nav-link dropdown-toggle" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                class="bi bi-person-circle"></i>
-                                Nama
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item bg-danger text-light" href="#">Logout</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-light nav-link dropdown-toggle" type="button"
+                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                    class="bi bi-person-circle"></i>
+                                    {{ auth()->user()->name }}
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a></li>
+                                    <li><a class="dropdown-item bg-danger text-light" href="#" onclick="event.preventDefault();document.getElementById('formLogout').submit()">Logout</a></li>
+                                    <form action="{{ route('logout') }}" method="post" id="formLogout">
+                                        @csrf
+                                    </form>
+                                </ul>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
+                                href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
+                                href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
