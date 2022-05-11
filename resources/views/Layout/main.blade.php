@@ -16,15 +16,18 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ URL::to('/assets/img/logo.png') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     {{-- CSS Custom --}}
     <style>
         html {
             scroll-padding-top: 100px;
         }
+
         body {
             font-family: 'Poppins', sans-serif;
         }
+
         .btn-utama {
             background-color: #273793;
             color: white;
@@ -35,6 +38,18 @@
             color: #273793;
             border-style: solid;
             border-color: #273793;
+        }
+
+        .btn-utama-inverted {
+            background-color: white;
+            color: #273793;
+            border-style: solid;
+            border-color: #273793;
+        }
+
+        .btn-utama-inverted:hover {
+            background-color: #273793;
+            color: white;
         }
 
         .bg-utama {
@@ -68,20 +83,51 @@
             transform: translate(-50%, -50%);
         }
 
+        .material-icons.md-18 {
+            font-size: 18px;
+        }
+
+        .material-icons.md-24 {
+            font-size: 24px;
+        }
+
+        /* Default */
+        .material-icons.md-36 {
+            font-size: 36px;
+        }
+
+        .material-icons.md-48 {
+            font-size: 48px;
+        }
+
+        .table tr th {
+            border-bottom: 2px solid #273793;
+            border-radius: 10px;
+            /* Change the color you want to set */
+        }
+
+        .table tr td {
+            border-bottom: 1px solid #273793;
+            border-radius: 10px;
+            /* Change the color you want to set */
+        }
+
     </style>
     {{-- end CSS Custom --}}
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    {{-- Navbar --}}
+
+    {{-- Nav User --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="/"><img src="{{ URL::to('/assets/img/logo.png') }}" alt="Logo KotaKita"
                     height="50"></a>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-middle">
                     <li class="nav-item">
-                        <a class="nav-link fw-bold active utama" href="/">Home</a>
+                        <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif utama"
+                            href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif" href="#">Proyek</a>
@@ -93,8 +139,25 @@
                         <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
                             href="#">Pengaduan</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- Guest --}}
+                    
+                    {{-- <li class="nav-item">
                         <a class="btn btn-utama fw-bold px-4" href="/login">Masuk</a>
+                    </li> --}}
+
+                    {{-- Registered --}}
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-light nav-link dropdown-toggle p-1" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><span
+                                    class="material-icons md-36 align-middle">account_circle</span>
+                                Nama
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item bg-danger text-light" href="#">Logout</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>

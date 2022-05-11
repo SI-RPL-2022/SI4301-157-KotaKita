@@ -72,7 +72,7 @@
             <center class='utama my-5'>
                 <h1>About Us</h1>
             </center>
-            <center class="mt-3 mb-5">sistem informasi pelaporan pengembangan kota yang digunakan untuk mengukur dan
+            <center class="mt-3 mb-5 fs-3">sistem informasi pelaporan pengembangan kota yang digunakan untuk mengukur dan
                 melaporkan pengembangan pada
                 masing masing daerah. selain itu, website ini dapat memberikan transparansi atas keuangan dan progress
                 dengan
