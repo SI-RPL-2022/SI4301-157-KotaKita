@@ -9,7 +9,6 @@ use App\Models\User;
 class Kota extends Model
 {
     use HasFactory;
-    public function Kota(){
-    return $this->hasMany(User::class, 'id', 'id_user');
-    }
+    protected $table = 'kota';
+    protected $guarded = ['id'];
 }

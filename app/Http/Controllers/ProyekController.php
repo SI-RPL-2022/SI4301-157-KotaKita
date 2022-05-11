@@ -21,35 +21,36 @@ class ProyekController extends Controller
      */
     public function index()
     {
-        $proyek = Proyek::with('Proyek')->get();
-        return view('proyek', compact('proyek'));
+        $proyek = 's';
+        return view('pages.proyek.index', compact('proyek'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
+    public function create()
     {
-        $proyek = new proyek();
-        $proyek->id_fase = $request->id_fase;
-        $proyek->id_feedback = $request->id_feedback;
-        $proyek->id_aduan = $request->id_aduan;
-        $proyek->id_kota = $request->id_kota;
-        $proyek->name = $request->nama;
-        $proyek->keterangan = $request->keterangan;
-        $proyek->mulai = $request->mulai;
-        $proyek->akhir = $request->akhir;
-
-        $imageName = ($request->image)->getClientOriginalName();
-        $proyek->foto = $imageName;
-        $request->image->move(public_path('assets/img/'), $imageName);
-
-        $proyek->save();
-
-        return redirect()->route('proyek');
+        return view('pages.proyek.create',[
+            'title' => 'Buat Proyek Baru'
+        ]);
     }
+    // public function create(Request $request)
+    // {
+    //     $proyek = new proyek();
+    //     $proyek->id_fase = $request->id_fase;
+    //     $proyek->id_feedback = $request->id_feedback;
+    //     $proyek->id_aduan = $request->id_aduan;
+    //     $proyek->id_kota = $request->id_kota;
+    //     $proyek->name = $request->nama;
+    //     $proyek->keterangan = $request->keterangan;
+    //     $proyek->mulai = $request->mulai;
+    //     $proyek->akhir = $request->akhir;
+
+    //     $imageName = ($request->image)->getClientOriginalName();
+    //     $proyek->foto = $imageName;
+    //     $request->image->move(public_path('assets/img/'), $imageName);
+
+    //     $proyek->save();
+
+    //     return redirect()->route('proyek');
+    // }
 
     /**
      * Store a newly created resource in storage.

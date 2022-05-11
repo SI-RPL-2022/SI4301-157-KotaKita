@@ -10,10 +10,11 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Kota;
 use App\Models\Feedback;
 use App\Models\Aduan;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens,HasRoles, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,10 +24,25 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'domisili',
+        'kota_id',
         'foto',
         'password',
     ];
+
+    public function foto()
+    {
+        if($this->foto)
+        {
+            return asset('storage/' . $this->foto);
+        }else{
+
+        }
+    }
+
+    public function kota()
+    {
+        return $this->belongsTo(Kota::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

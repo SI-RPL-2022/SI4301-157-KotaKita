@@ -10,13 +10,13 @@ use App\Models\Aduan;
 use App\Models\Kota;
 
 
-class Proyek extends Model
-{
-    use HasFactory;
-    public function Proyek(){
-        return $this->hasMany(Fase::class, 'id', 'id_fase');
-        return $this->hasMany(Feedback::class, 'id', 'id_feedback');
-        return $this->hasMany(Aduan::class, 'id', 'id_aduan');
-        return $this->belongsTo(Kota::class, 'id', 'id_kota');
-    }
-}
+// class Proyek extends Model
+// {
+//     use HasFactory;
+//     // public function Proyek(){
+//     //     return $this->hasMany(Fase::class, 'id', 'id_fase');
+//     //     return $this->hasMany(Feedback::class, 'id', 'id_feedback');
+//     //     return $this->hasMany(Aduan::class, 'id', 'id_aduan');
+//     //     return $this->belongsTo(Kota::class, 'id', 'id_kota');
+//     // }
+// }
