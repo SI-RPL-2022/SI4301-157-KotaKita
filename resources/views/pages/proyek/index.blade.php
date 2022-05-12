@@ -26,34 +26,12 @@
                                     <a href="" class="btn btn-utama">Cek</a>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="d-grid">
-                                    <a href="" class="btn btn-utama">Edit</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- End Card --}}
-            {{-- Card Cek --}}
-            <div class="col">
-                <div class="card h-100 border-white">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Card title</h5>
-                        <div class="row gx-3">
-                            <div class="col">
-                                <div class="d-grid">
-                                    <a href="" class="btn btn-utama">Cek</a>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- End Card Cek --}}
+            {{-- End Card --}}
             <div class="col">
                 <div class="card h-100 border-white">
                     <img src="..." class="card-img-top" alt="...">
@@ -63,11 +41,6 @@
                             <div class="col">
                                 <div class="d-grid">
                                     <a href="" class="btn btn-utama">Cek</a>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-grid">
-                                    <a href="" class="btn btn-utama">Edit</a>
                                 </div>
                             </div>
                         </div>
@@ -85,9 +58,19 @@
                                     <a href="" class="btn btn-utama">Cek</a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border-white">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Card title</h5>
+                        <div class="row gx-3">
                             <div class="col">
                                 <div class="d-grid">
-                                    <a href="" class="btn btn-utama">Edit</a>
+                                    <a href="" class="btn btn-utama">Cek</a>
                                 </div>
                             </div>
                         </div>
