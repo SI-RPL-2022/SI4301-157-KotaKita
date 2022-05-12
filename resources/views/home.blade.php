@@ -124,6 +124,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col d-grid">
+                    <a href="/faq" class="btn btn-lg btn-utama">Cari Tau Lebih tentang kami</a>
+                </div>
+                <div class="col d-grid">
+                    <a href="/contact" class="btn btn-lg btn-utama">Hubungi Kami Jika Mengalami Kendala</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

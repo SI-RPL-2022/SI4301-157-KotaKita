@@ -48,3 +48,11 @@ Route::get('/edit-profile',[ProfileController::class,'edit'])->name('profile.edi
 
 // proyek
 Route::get('/proyek',[ProyekController::class,'index'])->name('proyek.index');
+
+Route::get('/faq', function () {
+    return view('faq');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
