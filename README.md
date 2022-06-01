@@ -1,4 +1,4 @@
-<p align="center"><img src="public\asset\img\logo.png" width="400"></p>
+<p align="center"><img src="https://drive.google.com/file/d/13lY7uij8kDnowmQHGir7Kgnaju9tbwQR/view?usp=sharing" width="400"></p>
 
 
 ## Tentang Kota Kita
