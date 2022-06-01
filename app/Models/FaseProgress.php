@@ -4,17 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Proyek;
-use App\Models\User;
 
-class Feedback extends Model
+class FaseProgress extends Model
 {
     use HasFactory;
-    protected $table = 'feedback';
     protected $guarded = ['id'];
 
-    public function user()
+    public function fase()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(Fase::class,'id','fase_id');
     }
 }

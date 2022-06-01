@@ -6,6 +6,7 @@ use App\Models\Fase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFaseRequest;
 use App\Http\Requests\UpdateFaseRequest;
+use App\Models\Gallery;
 
 class FaseController extends Controller
 {
@@ -24,9 +25,12 @@ class FaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($proyek_id)
     {
-        //
+        return view('pages.fase.create',[
+            'title' => 'Tambah Fase',
+            'proyek_id' => $proyek_id
+        ]);
     }
 
     /**
@@ -35,9 +39,31 @@ class FaseController extends Controller
      * @param  \App\Http\Requests\StoreFaseRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFaseRequest $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'proyek_id' => ['required'],
+            'nama_fase' => ['required'],
+            'tanggal_mulai' => ['required'],
+            'tanggal_akhir' => ['required'],
+            'estimasi_pendanaan' => ['required'],
+            'file' => ['required']
+        ]);
+
+        $data = request()->except('file');
+        $fase = Fase::create($data);
+
+        $files = request()->file('file');
+        foreach($files as $file)
+        {
+            Gallery::create([
+                'fase_id' => $fase->id,
+                'type' => 'document',
+                'url' => $file->store('fase','public')
+            ]);
+        }
+
+        return redirect()->route('proyek.show',request('proyek_id'))->with('success','Fase berhasil ditambahkan.');
     }
 
     /**

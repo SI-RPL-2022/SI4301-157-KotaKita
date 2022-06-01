@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateProyekRequest;
 use App\Models\Fase;
 use App\Models\Feedback;
 use App\Models\Aduan;
+use App\Models\Gallery;
 use App\Models\Kota;
 
 class ProyekController extends Controller
@@ -21,47 +22,44 @@ class ProyekController extends Controller
      */
     public function index()
     {
-        $proyek = 's';
-        return view('pages.proyek.index', compact('proyek'));
+        $items = Proyek::proyek()->latest()->paginate(10);
+        return view('pages.proyek.index', compact('items'));
     }
 
     public function create()
     {
+        $data_kota = Kota::orderBy('nama','ASC')->get();
         return view('pages.proyek.create',[
-            'title' => 'Buat Proyek Baru'
+            'title' => 'Buat Proyek Baru',
+            'data_kota' => $data_kota
         ]);
     }
-    // public function create(Request $request)
-    // {
-    //     $proyek = new proyek();
-    //     $proyek->id_fase = $request->id_fase;
-    //     $proyek->id_feedback = $request->id_feedback;
-    //     $proyek->id_aduan = $request->id_aduan;
-    //     $proyek->id_kota = $request->id_kota;
-    //     $proyek->name = $request->nama;
-    //     $proyek->keterangan = $request->keterangan;
-    //     $proyek->mulai = $request->mulai;
-    //     $proyek->akhir = $request->akhir;
 
-    //     $imageName = ($request->image)->getClientOriginalName();
-    //     $proyek->foto = $imageName;
-    //     $request->image->move(public_path('assets/img/'), $imageName);
-
-    //     $proyek->save();
-
-    //     return redirect()->route('proyek');
-    // }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProyekRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreProyekRequest $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'nama_proyek' => ['required'],
+            'logo' => ['required','image','mimes:jpg,png,jpeg'],
+            'gambar' => ['required','image','mimes:jpg,png,jpeg'],
+            'tanggal_mulai' => ['required'],
+            'tanggal_akhir' => ['required'],
+            'kota_id' => ['required']
+        ]);
+
+        Proyek::create([
+            'nama_proyek' => request('nama_proyek'),
+            'kota_id' => request('kota_id'),
+            'logo' => request()->file('logo')->store('proyek','public'),
+            'gambar' => request()->file('gambar')->store('proyek','public'),
+            'type' => 'proyek',
+            'tanggal_mulai' => request('tanggal_mulai'),
+            'tanggal_akhir' => request('tanggal_akhir'),
+            'keterangan' => request('keterangan')
+        ]);
+
+        return redirect()->route('proyek.index')->with('success','Proyek berhasil ditambahkan.');
     }
+
 
     /**
      * Display the specified resource.
@@ -69,9 +67,21 @@ class ProyekController extends Controller
      * @param  \App\Models\Proyek  $proyek
      * @return \Illuminate\Http\Response
      */
-    public function show(Proyek $proyek)
+    public function show($id)
     {
-        //
+        $item = Proyek::with(['fases' => function($q){
+            return $q->orderBy('tanggal_mulai','ASC');
+        },'aduans.user','aduans.foto'])->findOrFail($id);
+        $fase = Fase::where('proyek_id',$item->id)->orderBy('id','DESC')->first();
+        if($fase)
+        {
+            $galleries = Gallery::where('fase_id',$fase->id)->where('type','image')->get();
+            $fase_id = $fase;
+        }else{
+            $fase_id =0;
+            $galleries = [];
+        }
+        return view('pages.proyek.show',compact('item','fase_id','galleries'));
     }
 
     /**
@@ -106,5 +116,13 @@ class ProyekController extends Controller
     public function destroy(Proyek $proyek)
     {
         //
+    }
+
+    public function getByKota()
+    {
+        $kota_id = request('kota_id');
+        $items = Proyek::where('kota_id',$kota_id)->where('type','proyek')->orderBy('nama_proyek','ASC')->get();
+
+        return response()->json($items);
     }
 }

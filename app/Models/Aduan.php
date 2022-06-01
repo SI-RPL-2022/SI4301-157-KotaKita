@@ -10,8 +10,21 @@ use App\Models\User;
 class Aduan extends Model
 {
     use HasFactory;
-    public function Aduan(){
-        return $this->belongsTo(User::class, 'id', 'id_user');
-        return $this->hasOne(Proyek::class, 'id', 'id_proyek');
-        }
+    protected $table = 'aduan';
+    protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function proyek()
+    {
+        return $this->belongsTo(Proyek::class,'proyek_id','id');
+    }
+
+    public function foto()
+    {
+        return $this->hasMany(Gallery::class,'aduan_id','id');
+    }
 }
