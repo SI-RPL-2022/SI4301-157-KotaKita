@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.ibb.co/w7pcKkk/logo.png" alt="logo" width="400"></p>
+<p align="center"><img src="https://i.ibb.co/w7pcKkk/logo.png" alt="logo" height="200"></p>
 
 ## Tentang Kota Kita
 
