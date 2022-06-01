@@ -1,6 +1,5 @@
 <p align="center"><img src="https://drive.google.com/file/d/13lY7uij8kDnowmQHGir7Kgnaju9tbwQR/view?usp=sharing" width="400"></p>
 
-
 ## Tentang Kota Kita
 
 KotaKita adalah website sistem informasi pelaporan pengembangan kota yang digunakan untuk mengukur dan melaporkan pengembangan pada masing masing daerah. selain itu, website ini dapat memberikan transparansi atas progress dengan adanya fitur Tracking Progress Pengembangan. Diharapkan juga dapat memudahkan pemerintah dan penyedia jasa untuk melaporkan progress dari tiap proyek yang ada di kota tersebut.
@@ -31,4 +30,3 @@ Laravel dibuat oleh Kelompok 157 beranggotakan :
 Dokumen pelengkap dari website ini dapat dilihat pada link berikut
 - [Proposal]()
 - [Susunan Database]()
--
