@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col d-grid">
                     <a href="/faq" class="btn btn-lg btn-utama">Cari Tau Lebih tentang kami</a>
                 </div>
