@@ -11,4 +11,12 @@ class Kota extends Model
     use HasFactory;
     protected $table = 'kota';
     protected $guarded = ['id'];
+
+    public function gambar()
+    {
+        if($this->gambar)
+        {
+            return asset('storage/'.$this->gambar);
+        }
+    }
 }

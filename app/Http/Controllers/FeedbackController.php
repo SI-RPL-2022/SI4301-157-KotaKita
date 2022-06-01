@@ -6,6 +6,8 @@ use App\Models\Feedback;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFeedbackRequest;
 use App\Http\Requests\UpdateFeedbackRequest;
+use App\Models\Kota;
+use App\Models\Proyek;
 
 class FeedbackController extends Controller
 {
@@ -16,7 +18,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -26,7 +28,15 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        $fasilitas = Proyek::fasilitas()->where('id',request('proyek'))->firstOrFail();
+        $data_kota = Kota::orderBy('nama','ASC')->get();
+        $data_fasilitas = Proyek::fasilitas()->orderBy('nama_proyek','ASC')->get();
+        return view('pages.feedback.create',[
+            'title' => 'Beri masukan mengenai fasilitas ' . $fasilitas->nama_proyek,
+            'data_kota' => $data_kota,
+            'data_fasilitas' => $data_fasilitas,
+            'fasilitas' => $fasilitas
+        ]);
     }
 
     /**
@@ -35,9 +45,18 @@ class FeedbackController extends Controller
      * @param  \App\Http\Requests\StoreFeedbackRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFeedbackRequest $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'proyek_id' => ['required'],
+            'rating' => ['required']
+        ]);
+
+        $data = request()->all();
+        $data['user_id'] = auth()->id();
+        Feedback::create($data);
+
+        return redirect()->route('fasilitas.show',request('proyek_id'))->with('success','Terimasih telah memberi feedback salah satu fasilitas kami.');
     }
 
     /**
