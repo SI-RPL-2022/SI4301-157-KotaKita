@@ -17,6 +17,8 @@
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ URL::to('/assets/img/logo.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
 
     {{-- CSS Custom --}}
     <style>
@@ -112,40 +114,52 @@
             /* Change the color you want to set */
         }
 
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center
+        }
+
+        .rating>input {
+            display: none
+        }
+
+        .rating>label {
+            position: relative;
+            width: 1em;
+            font-size: 30px;
+            font-weight: 300;
+            color: #FFD600;
+            cursor: pointer
+        }
+
+        .rating>label::before {
+            content: "\F586";
+            position: absolute;
+            opacity: 0
+        }
+
+        .rating>label:hover:before,
+        .rating>label:hover~label:before {
+            opacity: 1 !important
+        }
+
+        .rating>input:checked~label:before {
+            opacity: 1
+        }
+
+        .rating:hover>input:checked~label:before {
+            opacity: 0.4
+        }
+
     </style>
     {{-- end CSS Custom --}}
+    @stack('styles')
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    {{-- Navbar --}}
-    {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="/"><img src="{{ URL::to('/assets/img/logo.png') }}" alt="Logo KotaKita"
-                    height="50"></a>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold active utama" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif" href="#">Proyek</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/laporan')) fw-bold active @endif" href="#">Laporan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
-                            href="#">Pengaduan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-utama fw-bold px-4" href="/login">Masuk</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> --}}
 
-    {{-- Nav User --}}
+    {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="/"><img src="{{ URL::to('/assets/img/logo.png') }}" alt="Logo KotaKita"
@@ -156,32 +170,31 @@
                         <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif utama"
                             href="/">Home</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif" href="{{ route('proyek.index') }}">Proyek</a>
+                        <a class="nav-link @if (Route::is('/layanan')) fw-bold active @endif"
+                            href="{{ route('layanan.index') }}">Proyek</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('/laporan')) fw-bold active @endif" href="#">Laporan</a>
+                        <a class="nav-link @if (Route::is('/laporan')) fw-bold active @endif" href="{{ route('laporan.index') }}">Laporan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
-                            href="#">Pengaduan</a>
+                            href="{{ route('aduan.create',0) }}">Pengaduan</a>
                     </li>
-                    {{-- Guest --}}
-                    {{-- <li class="nav-item">
-                        <a class="btn btn-utama fw-bold px-4" href="/login">Masuk</a>
-                    </li> --}}
-                    {{-- Registered --}}
                     @auth
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn btn-light nav-link dropdown-toggle" type="button"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="bi bi-person-circle"></i>
+                                        class="bi bi-person-circle"></i>
                                     {{ auth()->user()->name }}
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a></li>
-                                    <li><a class="dropdown-item bg-danger text-light" href="#" onclick="event.preventDefault();document.getElementById('formLogout').submit()">Logout</a></li>
+                                    <li><a class="dropdown-item bg-danger text-light" href="#"
+                                            onclick="event.preventDefault();document.getElementById('formLogout').submit()">Logout</a>
+                                    </li>
                                     <form action="{{ route('logout') }}" method="post" id="formLogout">
                                         @csrf
                                     </form>
@@ -191,11 +204,11 @@
                     @else
                         <li class="nav-item">
                             <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
-                            href="{{ route('login') }}">Login</a>
+                                href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @if (Route::is('/aduan')) fw-bold active @endif"
-                            href="{{ route('register') }}">Register</a>
+                                href="{{ route('register') }}">Register</a>
                         </li>
                     @endauth
                 </ul>
@@ -223,7 +236,7 @@
                     <div class="text-end col d-flex align-items-center">
                         <form action="" method="post">
                             @csrf
-                            <div class="row ">
+                            <div class="row">
                                 <p class="text-center fw-bold">Berlangganan untuk mendapatkan berita</p>
                                 <div class="col">
                                     <div class="form mb-3">
@@ -242,6 +255,9 @@
         </div>
     </footer>
     {{-- end Footer --}}
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+    @include('layouts.sweetalert')
+    @stack('scripts')
 </body>
 
 </html>
