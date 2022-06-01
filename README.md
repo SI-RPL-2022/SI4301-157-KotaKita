@@ -1,5 +1,4 @@
-<p align="center"><img src="public\asset\img\logo.png" width="400"></p>
-
+<p align="center"><img src="https://i.ibb.co/w7pcKkk/logo.png" alt="logo" height="200"></p>
 
 ## Tentang Kota Kita
 
@@ -31,4 +30,3 @@ Laravel dibuat oleh Kelompok 157 beranggotakan :
 Dokumen pelengkap dari website ini dapat dilihat pada link berikut
 - [Proposal]()
 - [Susunan Database]()
--
