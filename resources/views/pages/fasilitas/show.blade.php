@@ -8,8 +8,27 @@
 
         <div class="row g-4">
             <div class="col-md-5 p-3">
-                <div class="foto-fasilitas">
-                    <i class="text-white">ini masih div, nanti di ganti img trus pake kelas ini</i>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{ $item->gambar() }}" class="d-block w-100" alt="foto fasilitas">
+                        </div>
+                        @foreach ($item->galleries as $gallery)
+                            <div class="carousel-item">
+                                <img src="{{ $gallery->foto() }}" class="d-block w-100" alt="foto fasilitas">
+                            </div>
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
             <div class="col-md-7 p-3">
@@ -19,43 +38,36 @@
                     </div>
                     <!-- Yang ini nyalain nya kalau dalam posisi login admin aja tombol editnya -->
                     <div class="col text-end">
-                        <a href="#" class="btn btn-login px-4">Edit</a>
+                        <a href="{{ route('fasilitas.edit', $item->id) }}" class="btn btn-utama px-4">Edit</a>
                     </div>
                 </div>
-                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                    consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                    consectetur adipisicing elit, </p>
+                <p class="text-justify">
+                    {{ $item->keterangan }}
+                </p>
 
                 <!-- Kalau lg admin matiin aja ini tombol -->
-                <a href="#" class="btn btn-login w-100">Input Feedback</a>
+                <a href="{{ route('feedback.create') }}?proyek={{ $item->id }}" class="btn btn-utama w-100">Input Feedback</a>
             </div>
         </div>
 
 
         <div class=" my-3">
-            <h3 class="fw-bold">Keterangan</h3>
+            <h3 class="fw-bold">Feedback</h3>
         </div>
         <div class="card border-2 rounded w-100 p-3">
+            @foreach ($item->feedbacks as $feedback)
             <div class="bintang">
                 <!-- Ini nnt fornya diatur sesuai rating biar bintangnya sesuai rating -->
-                <?php for ($i=0;$i<5; $i++): ?>
+                <?php for ($i=0;$i<$feedback->rating; $i++): ?>
                 <i class="bi bi-star-fill"></i>
                 <?php endfor ?>
 
-                <h5 class="fw-bold my-2">Bambang</h5>
+                <h5 class="fw-bold my-2">{{ $feedback->user->name ?? '-' }}</h5>
 
-                <p>Pengerjaan bagus</p>
+                <p>{{ $feedback->feedback }}</p>
             </div>
+            <hr>
+            @endforeach
         </div>
     </div>
 @endsection
