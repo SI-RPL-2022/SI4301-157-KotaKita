@@ -31,11 +31,16 @@
             </select>
             <label class="fw-bold fs-4" for="rating">Berikan Penilaianmu</label>
             <div class="rating">
-                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                <input type="radio" name="rating" value="5" id="5"><label class="rating5" name="rating"
+                    value="5" for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label class="rating4" name="rating"
+                    value="4" for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label class="rating3" name="rating"
+                    value="3" for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label class="rating2" name="rating"
+                    value="2" for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label class="rating1" name="rating"
+                    value="1" for="1">☆</label>
             </div>
             <div class="mb-3">
                 <label for="feedback" class="form-label fw-bold mb-3">Ceritakan Pengalamanmu</label>
