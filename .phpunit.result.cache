@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Tests\\Browser\\feedbackTest::testBasicExample":4},"times":{"Tests\\Browser\\feedbackTest::testBasicExample":21.321}}
+{"version":1,"defects":{"Tests\\Browser\\feedbackTest::testBasicExample":4,"Tests\\Browser\\aduanTest::testBasicExample":3},"times":{"Tests\\Browser\\feedbackTest::testBasicExample":21.321,"Tests\\Browser\\aduanTest::testBasicExample":14.413}}

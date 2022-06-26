@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class feedbackTest extends DuskTestCase
+class aduanTest extends DuskTestCase
 {
     /**
      * A basic browser test example.
@@ -23,23 +23,18 @@ class feedbackTest extends DuskTestCase
                 ->pause(2000)
                 ->press('Masuk')
                 ->assertSee('Dashboard')
-                ->clickLink('Proyek')
+                ->clickLink('Pengaduan')
                 ->pause(1000)
-                ->assertSee('PILIH LAYANAN')
-                ->clickLink('Fasilitas')
-                ->assertSee('FASILITAS')
-                ->clickLink('Cek')
-                ->assertSee('Nama Fasilitas')
-                ->clickLink('Input Feedback')
-                ->assertSee('FEEDBACK')
-                ->select('kota_id', '2')
-                ->select('proyek_id', '1')
-                ->click('.rating4', '4')
+                ->assertSee('ADUAN MASYARAKAT')
+                ->select('kota_id', '1')
+                ->select('proyek_id', '2')
+                ->type('aduan', 'Kurang bagus hasilnya')
+                ->attach('foto[]', base_path("public/jalananrusak.jpg"))
+                ->press('Add')
                 ->pause(2000)
-                ->type('feedback', 'bagus banget')
-                ->pause(2000)
-                ->press('Submit')
+                ->press('Kirim')
                 ->pause(1000)
+                ->assertSee('Aduan')
                 ->screenshot('Feedback');
         });
     }
