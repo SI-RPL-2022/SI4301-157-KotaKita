@@ -9,25 +9,25 @@ use Tests\DuskTestCase;
 class aduanTest extends DuskTestCase
 {
     /**
-     * A basic browser test example.
+     * A Dusk test example.
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testExample()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                 ->assertSee('LOGIN')
-                ->type('email', 'user@gmail.com')
-                ->type('password', 'user')
+                ->type('email', 'amel@gmail.com')
+                ->type('password', 'password123')
                 ->pause(2000)
                 ->press('Masuk')
                 ->assertSee('Dashboard')
                 ->clickLink('Pengaduan')
                 ->pause(1000)
                 ->assertSee('ADUAN MASYARAKAT')
-                ->select('kota_id', '1')
-                ->select('proyek_id', '2')
+                ->select('kota_id', '2')
+                ->select('proyek_id', '1')
                 ->type('aduan', 'Kurang bagus hasilnya')
                 ->attach('foto[]', base_path("public/jalananrusak.jpg"))
                 ->press('Add')
