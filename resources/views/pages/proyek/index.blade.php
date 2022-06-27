@@ -8,9 +8,9 @@
             </div>
             {{-- Button Buat Proyek --}}
             <div class="col-2 d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
-              @can('proyek-create')
-              <a href="{{ route('proyek.create') }}" class="btn btn-utama">Buat Proyek Baru</a>
-              @endcan
+                @role('admin|super admin')
+                <a href="{{ route('proyek.create') }}" class="btn btn-utama">Buat Proyek Baru</a>
+                @endrole
             </div>
           </div>
 

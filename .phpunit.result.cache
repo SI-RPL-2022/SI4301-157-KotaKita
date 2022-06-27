@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"version":1,"defects":{"Tests\\Browser\\feedbackTest::testBasicExample":3,"Tests\\Browser\\aduanTest::testBasicExample":3},"times":{"Tests\\Browser\\feedbackTest::testBasicExample":17.469,"Tests\\Browser\\aduanTest::testBasicExample":14.489}}
+=======
+{"version":1,"defects":{"Tests\\Browser\\feedbackTest::testBasicExample":4,"Tests\\Browser\\aduanTest::testBasicExample":4},"times":{"Tests\\Browser\\feedbackTest::testBasicExample":21.321,"Tests\\Browser\\aduanTest::testBasicExample":12.435}}
+>>>>>>> 8ac1c1d45595d0c73cb17d39815c9bc306d6727c
