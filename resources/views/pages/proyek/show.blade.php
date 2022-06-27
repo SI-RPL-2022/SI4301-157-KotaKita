@@ -142,7 +142,13 @@
         {{-- End Button Input --}}
         {{-- tb Fase --}}
         <div class="mb-5">
-            <h3 class="fw-bold mb-3">Fase</h3>
+            <div class="d-flex justify-content-between">
+                <h3 class="fw-bold mb-3">Fase</h3>
+                <form action="{{ route('proyek.setEnd',$item->id) }}" method="post" class="d-inline">
+                    @csrf
+                    <button class="btn btn-success">Proyek Selesai</button>
+                </form>
+            </div>
             <table class="table table-hover text-center">
                 <thead>
                     <tr>
@@ -179,12 +185,6 @@
         <div class="mb-5">
             {{-- Progress Bar --}}
             <h3 class="fw-bold mb-3">Progress</h3>
-            <div class="progress mb-3">
-                <div class="progress-bar bg-utama" style="width: 25%" role="progressbar" aria-valuemin="0"
-                    aria-valuemax="100">
-                </div>
-            </div>
-            <p class="fw-bold text-center">75%</p>
             {{-- End Progress Bar --}}
             {{-- Tb Progress --}}
             <table class="table table-hover text-center">
