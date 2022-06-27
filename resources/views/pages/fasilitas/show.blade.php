@@ -38,7 +38,9 @@
                     </div>
                     <!-- Yang ini nyalain nya kalau dalam posisi login admin aja tombol editnya -->
                     <div class="col text-end">
+                        @role('admin|super admin')
                         <a href="{{ route('fasilitas.edit', $item->id) }}" class="btn btn-utama px-4">Edit</a>
+                        @endrole
                     </div>
                 </div>
                 <p class="text-justify">
