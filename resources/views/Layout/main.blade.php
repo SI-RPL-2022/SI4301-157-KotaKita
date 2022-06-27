@@ -170,7 +170,12 @@
                         <a class="nav-link @if (Route::is('/proyek')) fw-bold active @endif utama"
                             href="/">Home</a>
                     </li>
-
+                    @role('user|admin|super admin')
+                    <li class="nav-item">
+                        <a class="nav-link @if (Route::is('/dashboard')) fw-bold active @endif utama"
+                            href="{{ route('dashboard') }}">Dashboard</a>
+                    </li>
+                    @endrole
                     <li class="nav-item">
                         <a class="nav-link @if (Route::is('/layanan')) fw-bold active @endif"
                             href="{{ route('layanan.index') }}">Proyek</a>

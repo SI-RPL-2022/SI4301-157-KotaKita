@@ -12,7 +12,7 @@
             <div class="col-md-6">
                 <div class="card" style="background: #273793;color:white">
                     <div class="card-body">
-                        <p>Total User</p>
+                        <p>Total Admin</p>
                         <p style="font-size:30px">{{ $data['total_user'] }}</p>
                     </div>
                 </div>
@@ -20,8 +20,8 @@
             <div class="col-md-6">
                 <div class="card" style="background: #273793;color:white">
                     <div class="card-body">
-                        <p>Admin Online</p>
-                        <p style="font-size:30px">90%</p>
+                        <p>Total Aduan</p>
+                        <p style="font-size:30px">{{ $data['total_aduan'] }}</p>
                     </div>
                 </div>
             </div>
@@ -35,13 +35,11 @@
                             <tr class="table-primary text-center">
                                 <th>Nama User</th>
                                 <th>Domisili</th>
-                                <th>Status</th>
                             </tr>
                             @foreach ($data['users'] as $user)
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->kota->nama ?? '-' }}</td>
-                                <td>Online</td>
                             </tr>
                             @endforeach
                         </table>

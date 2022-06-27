@@ -5,7 +5,6 @@
             <div class="col-md-12">
                 <div class="d-flex justify-content-between">
                     <h4>Dashboard</h4>
-                    <a href="" class="btn btn-utama">Tambah Proyek</a>
                 </div>
             </div>
         </div>
@@ -13,8 +12,8 @@
             <div class="col-md-6">
                 <div class="card" style="background: #273793;color:white">
                     <div class="card-body">
-                        <p>Total Aduan Belum Terselesaikan</p>
-                        <p style="font-size:30px">120</p>
+                        <p>Total Aduan Anda</p>
+                        <p style="font-size:30px">{{ $data['total_aduan'] }}</p>
                     </div>
                 </div>
             </div>
