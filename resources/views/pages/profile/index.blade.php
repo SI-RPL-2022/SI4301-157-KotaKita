@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col text-center">
                         <div class="foto">
-                            <img src="{{ auth()->user()->foto() }}" alt="Foto Profil">
+                            <img src="{{ auth()->user()->foto() }}" alt="Foto Profil" class="img-fluid">
                         </div>
                         <a href="{{ route('profile.edit') }}" class="btn btn-utama">Edit Profile</a>
                     </div>

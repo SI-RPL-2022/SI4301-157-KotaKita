@@ -51,7 +51,7 @@ class ProfileController extends Controller
             'password' => $password
         ]);
 
-        return redirect()->route('profile.index')->with('success','Profile berhasil disimpan.');
+        return redirect()->back()->with('success','Profile berhasil disimpan.');
     }
 
     public function fotoUpdate()
@@ -64,7 +64,7 @@ class ProfileController extends Controller
             'foto' => request()->file('foto')->store('user','public')
         ]);
 
-        return redirect()->route('profile.index')->with('success','Foto Profile berhasil diupdate.');
+        return redirect()->back()->with('success','Foto Profile berhasil diupdate.');
     }
 
     public function fotoRemove()
@@ -73,6 +73,6 @@ class ProfileController extends Controller
             'foto' => NULL
         ]);
         Storage::disk('public')->delete(auth()->user()->foto);
-        return redirect()->route('profile.index')->with('success','Foto Profile berhasil dihapus.');
+        return redirect()->back()->with('success','Foto Profile berhasil dihapus.');
     }
 }
