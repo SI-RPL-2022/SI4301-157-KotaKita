@@ -16,7 +16,8 @@ class DashboardController extends Controller
         if(auth()->user()->hasRole('super admin'))
         {
             $data = [
-                'total_user' => User::role('user')->count(),
+                'total_user' => User::role('admin')->count(),
+                'total_aduan' => Aduan::count(),
                 'users' => User::role('admin')->get()
             ];
             return view('pages.dashboard.superadmin',[
@@ -28,7 +29,10 @@ class DashboardController extends Controller
             $proyeks = Proyek::latest()->get();
             $data = [
                 'total_aduan' => Aduan::count(),
-                'total_progress' => FaseProgress::whereYear('created_at',Carbon::now()->format('Y'))->count()
+                'total_progress' => FaseProgress::whereYear('created_at',Carbon::now()->format('Y'))->count(),
+                'total_user' => User::role('user')->count(),
+                'users' => User::role('user')->get(),
+                'avg_aduan' => Aduan::count()/User::role('user')->count()
             ];
             return view('pages.dashboard.admin',[
                 'title' => 'Dashboard',

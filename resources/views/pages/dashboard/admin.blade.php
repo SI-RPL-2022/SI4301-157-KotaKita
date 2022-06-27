@@ -13,8 +13,8 @@
             <div class="col-md-3">
                 <div class="card" style="background: #273793;color:white">
                     <div class="card-body">
-                        <p>Pengungjung saat ini</p>
-                        <p style="font-size:30px">120</p>
+                        <p>total User</p>
+                        <p style="font-size:30px">{{ $data['total_user'] }}</p>
                     </div>
                 </div>
             </div>
@@ -29,16 +29,16 @@
             <div class="col-md-3">
                 <div class="card" style="background: #273793;color:white">
                     <div class="card-body">
-                        <p>Rata-rata umpan balik proyek</p>
-                        <p style="font-size:30px">120</p>
+                        <p>Progress Keseluruhan Tahun Ini</p>
+                        <p style="font-size:30px">{{ $data['total_progress'] }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card" style="background: #273793;color:white">
                     <div class="card-body">
-                        <p>Progress Keseluruhan Tahun Ini</p>
-                        <p style="font-size:30px">{{ $data['total_progress'] }}</p>
+                        <p>total Aduan tiap User</p>
+                        <p style="font-size:30px">{{ $data['avg_aduan'] }}</p>
                     </div>
                 </div>
             </div>
