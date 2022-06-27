@@ -5640,6 +5640,7 @@ class ComposerStaticInitbfc28e6c71d12d89cbf4a749521c6fb9
         'Tests\\Browser\\Pages\\HomePage' => __DIR__ . '/../..' . '/tests/Browser/Pages/HomePage.php',
         'Tests\\Browser\\Pages\\Page' => __DIR__ . '/../..' . '/tests/Browser/Pages/Page.php',
         'Tests\\Browser\\aduanTest' => __DIR__ . '/../..' . '/tests/Browser/aduanTest.php',
+        'Tests\\Browser\\feedbackTest' => __DIR__ . '/../..' . '/tests/Browser/feedbackTest.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\DuskTestCase' => __DIR__ . '/../..' . '/tests/DuskTestCase.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',

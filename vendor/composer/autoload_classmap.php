@@ -5113,6 +5113,7 @@ return array(
     'Tests\\Browser\\Pages\\HomePage' => $baseDir . '/tests/Browser/Pages/HomePage.php',
     'Tests\\Browser\\Pages\\Page' => $baseDir . '/tests/Browser/Pages/Page.php',
     'Tests\\Browser\\aduanTest' => $baseDir . '/tests/Browser/aduanTest.php',
+    'Tests\\Browser\\feedbackTest' => $baseDir . '/tests/Browser/feedbackTest.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
     'Tests\\DuskTestCase' => $baseDir . '/tests/DuskTestCase.php',
     'Tests\\Feature\\ExampleTest' => $baseDir . '/tests/Feature/ExampleTest.php',
