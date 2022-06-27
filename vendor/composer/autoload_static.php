@@ -5637,6 +5637,8 @@ class ComposerStaticInitbfc28e6c71d12d89cbf4a749521c6fb9
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
+        'Tests\\Browser\\DashboardTest' => __DIR__ . '/../..' . '/tests/Browser/DashboardTest.php',
+        'Tests\\Browser\\ExampleTest' => __DIR__ . '/../..' . '/tests/Browser/ExampleTest.php',
         'Tests\\Browser\\Pages\\HomePage' => __DIR__ . '/../..' . '/tests/Browser/Pages/HomePage.php',
         'Tests\\Browser\\Pages\\Page' => __DIR__ . '/../..' . '/tests/Browser/Pages/Page.php',
         'Tests\\Browser\\aduanTest' => __DIR__ . '/../..' . '/tests/Browser/aduanTest.php',

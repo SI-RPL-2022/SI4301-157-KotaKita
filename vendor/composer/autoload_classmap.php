@@ -5110,6 +5110,8 @@ return array(
     'Symfony\\Polyfill\\Php80\\Php80' => $vendorDir . '/symfony/polyfill-php80/Php80.php',
     'Symfony\\Polyfill\\Php80\\PhpToken' => $vendorDir . '/symfony/polyfill-php80/PhpToken.php',
     'Symfony\\Polyfill\\Php81\\Php81' => $vendorDir . '/symfony/polyfill-php81/Php81.php',
+    'Tests\\Browser\\DashboardTest' => $baseDir . '/tests/Browser/DashboardTest.php',
+    'Tests\\Browser\\ExampleTest' => $baseDir . '/tests/Browser/ExampleTest.php',
     'Tests\\Browser\\Pages\\HomePage' => $baseDir . '/tests/Browser/Pages/HomePage.php',
     'Tests\\Browser\\Pages\\Page' => $baseDir . '/tests/Browser/Pages/Page.php',
     'Tests\\Browser\\aduanTest' => $baseDir . '/tests/Browser/aduanTest.php',
